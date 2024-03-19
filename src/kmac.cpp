@@ -12,11 +12,11 @@ int main(int argc, char** argv)
   std::ignore = argv;
 
   Kmac<float, float>::Config config;
-  config.n_inputs = 3;
-  config.n_layers = 10;
-  config.bounds = std::vector<Bounds<float>>{{0.0, 0.2}, {0.0, 0.2}, {0.0, 0.2}};
-  config.bin_sizes = std::vector<float>{0.01, 0.01, 0.01};
-  config.initial_value = 0.0;
+  config.n_inputs_ = 2;
+  config.n_layers_ = 2;
+  config.bounds_ = std::vector<Bounds<float>>{{0.0, 1.0}, {0.0, 2.0}};
+  config.bin_sizes_ = std::vector<float>{0.5, 1.0};
+  config.initial_value_ = [](const std::vector<float>& inputs) { return inputs[0] * inputs[1]; };
   Kmac<float, float> kmac(config);
 
   std::cout << "Done!" << std::endl;
